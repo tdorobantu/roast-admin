@@ -4,6 +4,7 @@
   height: 12.5em;
   border-radius: 1.5em;
   padding: 2em;
+  margin-top: 1em;
 }
 
 .card__body {
@@ -26,10 +27,10 @@
   margin-left: 0.25em;
 }
 
-input.date__value--edit,
+/* input.date__value--edit,
 input.coupons__value--edit,
 input.product__value--edit {
-}
+} */
 
 .card__footer {
   display: flex;

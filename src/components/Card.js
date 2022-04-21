@@ -1,18 +1,22 @@
 import React, { useState } from "react";
 import "./Card.css";
 import { Button } from "@mui/material";
+import { useDispatch } from "react-redux";
+import { editCampaign, suspendCampaign } from "../redux/slices/campaignSlice";
 
-const Card = () => {
+const Card = ({ state }) => {
+  const dispatch = useDispatch();
   const [edit, setEdit] = useState(false);
-  const [fields, setFields] = useState({
-    date: "23.04.2022",
-    coupons: 200,
-    product: "Cappuccino ☕️",
-  });
+  const [fields, setFields] = useState(state);
 
   const handleEdit = () => {
+    if (edit) dispatch(editCampaign(fields));
     setEdit((prev) => !prev);
   };
+
+  const handleDisable = () => {
+    dispatch(suspendCampaign(fields.id))
+  }
 
   const handleChange = (event) => {
     const { value, name } = event.target;
@@ -37,7 +41,7 @@ const Card = () => {
 
   return (
     <div className="card__container">
-      <p className="card__headerText">Campaign#1</p>
+      <p className="card__headerText">{fields.title}</p>
       <div className="card__body">
         <div className="card__date">
           <p className="date__label">Campaign End: </p>
@@ -54,7 +58,7 @@ const Card = () => {
       </div>
       <div className="card__footer">
         <Button onClick={handleEdit}>{edit ? "Save" : "Edit"} </Button>
-        <Button disabled={edit}>Suspend</Button>
+        <Button onClick={handleDisable} disabled={edit}>Suspend</Button>
       </div>
     </div>
   );
