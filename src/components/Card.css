@@ -1,0 +1,37 @@
+.card__container {
+  background-color: whitesmoke;
+  width: 20em;
+  height: 12.5em;
+  border-radius: 1.5em;
+  padding: 2em;
+}
+
+.card__body {
+  display: flex;
+  flex-direction: column;
+  margin: 1em;
+}
+
+.card__date,
+.card__coupons,
+.card__product {
+  display: flex;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+.date__value,
+.coupons__value,
+.product__value {
+  margin-left: 0.25em;
+}
+
+input.date__value--edit,
+input.coupons__value--edit,
+input.product__value--edit {
+}
+
+.card__footer {
+  display: flex;
+  justify-content: space-between;
+}
