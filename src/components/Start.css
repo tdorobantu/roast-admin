@@ -1,0 +1,34 @@
+.login__container,
+.register__container,
+.forgot__container {
+  display: flex;
+  margin-top: 20vh;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.login__header,
+.register__header,
+.forgot__header {
+  margin: 1em;
+}
+
+.login__message,
+.register__message,
+.forgot__message {
+  color: red;
+}
+
+.login__input,
+.register__input,
+.forgot__input {
+  margin: 0.5em;
+}
+
+.login__submitBtn,
+.register__submitBtn,
+.login__forgotBtn,
+.forgot__submitBtn {
+  margin: 1em;
+}

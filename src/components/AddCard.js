@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./Card.css";
 import { Button } from "@mui/material";
 import { useDispatch } from "react-redux";
-import { createCampaign } from "../redux/slices/campaignSlice";
+import { create } from "../redux/slices/campaignSlice";
 import { v4 as uuidv4 } from "uuid";
 
 const AddCard = () => {
@@ -24,7 +24,7 @@ const AddCard = () => {
 
   const handleInitiate = () => {
     const campaign = { id: uuidv4(), ...fields };
-    dispatch(createCampaign(campaign));
+    dispatch(create(campaign));
     setFields((prev) => {
       return {
         title: "",
