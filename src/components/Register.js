@@ -5,10 +5,10 @@ import isStrongPassword from "validator/lib/isStrongPassword";
 import isEmpty from "lodash/isEmpty";
 import "./Start.css";
 import * as api from "../api";
+import normalizeEmail from "validator/lib/normalizeEmail";
 
 const Register = ({ setPage }) => {
-
-  const passLength = 8
+  const passLength = 8;
 
   const [credentials, setCredentials] = useState({
     name: "",
@@ -21,7 +21,12 @@ const Register = ({ setPage }) => {
     password: false,
   });
 
-  const [message, setMessage] = useState({ email: "", password: "", name: "",  server: ""});
+  const [message, setMessage] = useState({
+    email: "",
+    password: "",
+    name: "",
+    server: "",
+  });
 
   const handleEmailInput = (event) => {
     setCredentials((prev) => {
@@ -59,8 +64,15 @@ const Register = ({ setPage }) => {
       };
     });
 
-    // set regex for name validation
-    let format = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
+    // declare regex pattern for name validation
+    let format = /[`!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?~]/;
+
+    // declare regex patterns for string sanitization
+    const blacklistName = /[`!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?~]/g;
+    const blacklistEmail = /[` !#$%^&*()_+\-=[\]{};':"\\|,<>/?~]/g;
+
+    console.log('original >>>', credentials.email)
+    console.log('replaced >>>', credentials.email.replace(blacklistEmail, ''))
 
     // Set password validator options
     const passOptions = {
@@ -128,7 +140,7 @@ const Register = ({ setPage }) => {
       setValidations((prev) => {
         return { ...prev, email: true };
       });
-    } 
+    }
     // Validate password
     if (!isStrongPassword(credentials.password, passOptions)) {
       setMessage((prev) => {
@@ -161,7 +173,13 @@ const Register = ({ setPage }) => {
 
     // Submit if valid form
     if (validations.name && validations.email && validations.password) {
-      const response = await api.register(credentials)
+      const requestCredentials = {
+        name: credentials.name.replace(blacklistName, ""),
+        email: normalizeEmail(credentials.email).replace(blacklistEmail, ""),
+        password: credentials.password,
+      };
+      console.table(requestCredentials)
+      const response = await api.register(requestCredentials);
     }
   };
 
@@ -179,20 +197,28 @@ const Register = ({ setPage }) => {
         type="text"
         placeholder="name"
         required
+        maxlength="400"
       ></input>
       <input
         onChange={(event) => handleEmailInput(event)}
         className="register__input register__input--email"
         type="email"
         placeholder="email"
+        maxlength="40"
+        required
       ></input>
       <input
         onChange={(event) => handlePasswordInput(event)}
         className="register__input register__input--password"
         type="password"
         placeholder="password"
+        maxlength="40"
+        required
       ></input>
-      <PasswordStrengthBar password={credentials.password} minLength={passLength} />
+      <PasswordStrengthBar
+        password={credentials.password}
+        minLength={passLength}
+      />
       <button onClick={handleSubmit} className="register__submitBtn">
         Register
       </button>

@@ -34,12 +34,15 @@ const Login = ({ setPage }) => {
         className="login__input login__input--email"
         type="email"
         placeholder="email"
+        required
+        maxlength="40"
       ></input>
       <input
         onChange={handlePasswordInput}
         className="login__input login__input--password"
         type="password"
         placeholder="password"
+        maxlength="40"
       ></input>
       <button onClick={handleSubmit} className="login__submitBtn">
         Login
