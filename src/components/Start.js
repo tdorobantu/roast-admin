@@ -2,11 +2,10 @@ import React, { useState } from "react";
 import ForgotPassword from "./ForgotPassword";
 import Login from "./Login";
 import Register from "./Register";
+import RegisterSuccess from "./RegisterSuccess";
 
 const Start = () => {
-  const [page, setPage] = useState("login");
-
-//   console.log("page is", page)
+  const [page, setPage] = useState("registerSuccess");
 
   const renderPage = (page, setPage) => {
     switch (page) {
@@ -16,13 +15,14 @@ const Start = () => {
         return <Register setPage={setPage} />;
       case "forgot":
         return <ForgotPassword setPage={setPage} />;
+      case "registerSuccess":
+        return <RegisterSuccess setPage={setPage} />;
       default:
         break;
     }
   };
 
   return <>{renderPage(page, setPage)}</>;
-  
 };
 
 export default Start;
