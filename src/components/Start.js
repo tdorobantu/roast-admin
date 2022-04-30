@@ -5,7 +5,7 @@ import Register from "./Register";
 import RegisterSuccess from "./RegisterSuccess";
 
 const Start = () => {
-  const [page, setPage] = useState("registerSuccess");
+  const [page, setPage] = useState("login");
 
   const renderPage = (page, setPage) => {
     switch (page) {

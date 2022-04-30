@@ -92,10 +92,14 @@ const Login = ({ setPage }) => {
 
       try {
         const response = await api.login(requestCredentials);
-        console.log(response);
+        setMessage((prev) => {
+          return { ...prev, server: response.data.message };
+        });
       } catch (error) {
         console.error(error.response.data);
-        setMessage(prev => {return {...prev, server: error.response.data}})
+        setMessage((prev) => {
+          return { ...prev, server: error.response.data.message };
+        });
       }
     }
   };
