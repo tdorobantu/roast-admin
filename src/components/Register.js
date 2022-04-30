@@ -53,7 +53,7 @@ const Register = ({ setPage }) => {
   const handleSubmit = async () => {
     // reset message and validations states
     setMessage((prev) => {
-      return { email: "", password: "", name: "" };
+      return { email: "", password: "", name: "", server: "" };
     });
 
     setValidations((prev) => {
@@ -71,8 +71,8 @@ const Register = ({ setPage }) => {
     const blacklistName = /[`!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?~]/g;
     const blacklistEmail = /[` !#$%^&*()_+\-=[\]{};':"\\|,<>/?~]/g;
 
-    console.log('original >>>', credentials.email)
-    console.log('replaced >>>', credentials.email.replace(blacklistEmail, ''))
+    console.log("original >>>", credentials.email);
+    console.log("replaced >>>", credentials.email.replace(blacklistEmail, ""));
 
     // Set password validator options
     const passOptions = {
@@ -178,8 +178,16 @@ const Register = ({ setPage }) => {
         email: normalizeEmail(credentials.email).replace(blacklistEmail, ""),
         password: credentials.password,
       };
-      console.table(requestCredentials)
-      const response = await api.register(requestCredentials);
+      try {
+        const response = await api.register(requestCredentials);
+        setMessage((prev) => {
+          return { ...prev, server: response.data.message };
+        });
+      } catch (error) {
+        setMessage((prev) => {
+          return { ...prev, server: error.response.data.message };
+        });
+      }
     }
   };
 
@@ -197,14 +205,14 @@ const Register = ({ setPage }) => {
         type="text"
         placeholder="name"
         required
-        maxlength="400"
+        maxLength="400"
       ></input>
       <input
         onChange={(event) => handleEmailInput(event)}
         className="register__input register__input--email"
         type="email"
         placeholder="email"
-        maxlength="40"
+        maxLength="40"
         required
       ></input>
       <input
@@ -212,7 +220,7 @@ const Register = ({ setPage }) => {
         className="register__input register__input--password"
         type="password"
         placeholder="password"
-        maxlength="40"
+        maxLength="40"
         required
       ></input>
       <PasswordStrengthBar
