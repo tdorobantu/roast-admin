@@ -6,3 +6,4 @@ export const createCampaign = data => axios.post(`${hostname}/api/campaign`, dat
 export const register = data => axios.post(`${hostname}/api/user/register`, data)
 export const login = data => axios.post(`${hostname}/api/user/login`, data);
 export const forgotPass = data => axios.post(`${hostname}/api/user/forgotPass`, data)
+export const confirmEmail = data => axios.post(`${hostname}/api/user/confirmEmail`, data) 

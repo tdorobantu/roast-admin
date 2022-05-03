@@ -6,6 +6,7 @@ import RegisterSuccess from "./RegisterSuccess";
 
 const Start = () => {
   const [page, setPage] = useState("login");
+  
 
   const renderPage = (page, setPage) => {
     switch (page) {

@@ -2,6 +2,7 @@ import "./App.css";
 import Campaign from "./components/Campaign";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Start from "./components/Start";
+import ConfirmEmail from "./components/ConfirmEmail"
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Start />} />
           <Route path="/campaign" element={<Campaign />} />
+          <Route path="/confirmEmail" element={<ConfirmEmail/>}/>
         </Routes>
       </Router>
     </div>
