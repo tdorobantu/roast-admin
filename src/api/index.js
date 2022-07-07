@@ -13,3 +13,5 @@ export const confirmEmail = (data) =>
   axios.post(`${hostname}/api/user/confirmEmail`, data);
 export const resendConfirmation = (data) =>
   axios.post(`${hostname}/api/user/resendConfirmation`, data);
+export const resetPassword = (data) =>
+  axios.post(`${hostname}/api/user/confirmPassword`, data);
