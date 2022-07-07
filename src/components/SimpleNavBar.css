@@ -1,0 +1,11 @@
+.simpleNavBar__container {
+    display: flex;
+    justify-content: center;
+   
+   
+}
+
+
+.customLink__wrapper {
+    margin: 1em;
+}

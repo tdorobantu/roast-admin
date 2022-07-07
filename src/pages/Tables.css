@@ -1,0 +1,18 @@
+.tables__container{
+    display: flex;
+    flex-direction: column;
+    border: 4px salmon solid;
+    margin: 1em;
+}
+
+.tables__header{
+    padding: 1em;
+}
+
+.react__grid{
+    display: flex;
+    margin: 1em;
+    align-items: center;
+    border: 2px gray solid;
+    padding: 1em;
+}

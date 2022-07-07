@@ -1,10 +1,13 @@
 import React from "react";
-import "./Campaign.css";
+import "../components/Campaign.css";
 import { Button } from "@mui/material";
-import Card from "./Card";
-import AddCard from "./AddCard";
+import Card from "../components/Card";
+import AddCard from "../components/AddCard";
 import { useSelector } from "react-redux";
 import { selectCards } from "../redux/slices/campaignSlice";
+
+
+
 
 const Campaign = () => {
 
@@ -12,6 +15,7 @@ const Campaign = () => {
 
   return (
     <div className="campaign__container">
+ 
       <div className="campaign__header">
         <p
           className="campaign__title

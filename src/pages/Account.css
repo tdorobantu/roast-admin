@@ -1,0 +1,98 @@
+.account__container{
+    background-color: whitesmoke;
+    display: flex;
+    flex-direction: column;
+    height: 57.5em;
+    border: 2px gray solid;
+    margin: 1.5em;
+    border-radius: 5px;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+}
+
+.account__body{
+    background-color: whitesmoke;
+    display: flex;
+    flex: 0.95;
+    justify-content: space-between;
+    padding: 0.5em;
+    
+}
+
+.account__column {
+    border: 1px gray solid;
+    border-radius: 10px;
+    display: flex;  
+    flex: 0.49
+    
+}
+
+.account__column--left{
+ display: flex ;
+ flex-direction: column;
+ align-items:stretch;
+ justify-content: space-between;
+ line-height: 2em;
+ font-size:14pt;
+ padding: 1em;
+ 
+}
+
+.account__column--right{
+    display: flex;
+    flex-direction: column;
+    padding: 1em;
+    line-height: 2em;
+    font-size:12pt;
+    justify-content: space-between;
+   }
+
+
+.account__heading--right{
+    margin-left: auto;
+}
+
+.account__heading{
+    display: flex;
+    flex-direction: row;
+    padding: 0.2em; 
+    
+}
+
+.toggleUI__container{
+    display: flex;
+}
+
+.toggle__description--text{
+    font-size: small;
+}
+
+.account__footer{
+    display: flex;
+    flex-direction: row-reverse;
+    padding-top: 1em;
+    padding-right: 2em;
+}
+
+.password__square{
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    border-width: 5px;
+    border-color: deepskyblue;
+    align-items: center;
+    
+
+
+}
+
+.notification__square{
+    display: flex;
+    flex-direction: column ;
+    padding: 30px;
+    border-width: 5px;
+    border-color: deepskyblue;
+    align-items: center;
+
+}
+

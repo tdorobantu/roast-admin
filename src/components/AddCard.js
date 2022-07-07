@@ -57,7 +57,7 @@ const AddCard = () => {
           />
         </div>
         <div className="card__coupons">
-          <p className="coupons_label">Coupons: </p>
+          <p className="coupons__label">Coupons: </p>
           <input
             value={fields.coupons}
             type="text"
