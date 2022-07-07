@@ -4,6 +4,7 @@ import isEmail from "validator/lib/isEmail";
 import isEmpty from "lodash/isEmpty";
 import * as api from "../api";
 import normalizeEmail from "validator/lib/normalizeEmail";
+import LoginHead from "./LoginHead";
 
 const Login = ({ setPage }) => {
   const [credentials, setCredentials] = useState({
@@ -107,6 +108,9 @@ const Login = ({ setPage }) => {
   return (
     <div className="login__container">
       <h1 className="login__header">Login Page</h1>
+      {/* <div className="loginHead__container">
+        <LoginHead />
+      </div> */}
       <p className="login__message">{message.email}</p>
       <p className="login__message">{message.password}</p>
       <p className="login__message">{message.server}</p>
