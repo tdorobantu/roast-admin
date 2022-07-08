@@ -1,0 +1,10 @@
+.home__wrapper {
+    display: flex;
+    margin-top: 3em;
+    align-items: center;
+    flex-direction: column;
+}
+
+.home__message {
+    margin-top: 2em;
+}

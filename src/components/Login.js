@@ -5,8 +5,12 @@ import isEmpty from "lodash/isEmpty";
 import * as api from "../api";
 import normalizeEmail from "validator/lib/normalizeEmail";
 import LoginHead from "./LoginHead";
+import { setJwtToken, setRefreshToken } from "../services/storageJWT";
+import { useNavigate } from "react-router-dom";
 
 const Login = ({ setPage }) => {
+  let navigate = useNavigate();
+
   const [credentials, setCredentials] = useState({
     email: "",
     password: "",
@@ -96,6 +100,10 @@ const Login = ({ setPage }) => {
         setMessage((prev) => {
           return { ...prev, server: response.data.message };
         });
+        setJwtToken(response.data.token);
+        setRefreshToken(response.data.refreshToken);
+        // Navigate to Homepage
+        navigate("/", { replace: true });
       } catch (error) {
         console.error(error.response.data);
         setMessage((prev) => {

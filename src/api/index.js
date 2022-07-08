@@ -1,4 +1,5 @@
 import axios from "axios";
+import { authHeader } from "../services/storageJWT";
 
 const hostname = process.env.REACT_APP_SERVER_URL;
 
@@ -15,3 +16,5 @@ export const resendConfirmation = (data) =>
   axios.post(`${hostname}/api/user/resendConfirmation`, data);
 export const resetPassword = (data) =>
   axios.post(`${hostname}/api/user/confirmPassword`, data);
+export const initApp = () =>
+  axios.get(`${hostname}/api/init/app`, authHeader());
