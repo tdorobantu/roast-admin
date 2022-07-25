@@ -18,10 +18,17 @@ export const setRefreshToken = (token) => {
   sessionStorage.setItem("refreshToken", token);
 };
 
+export const deleteJwtToken = () => {
+  sessionStorage.removeItem("jwt");
+};
+
+export const deleteRefreshToken = () => {
+  sessionStorage.removeItem("refreshToken");
+};
+
 export const authHeader = () => {
   const token = getJwtToken();
   if (token !== null) {
-    console.log("token is: ", token);
     return {
       headers: {
         Authorization: `Bearer ${token}`,

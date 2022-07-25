@@ -7,6 +7,10 @@ import ResetPassword from "./components/ResetPassword";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Home from "./components/Home";
 
+// * Test User
+// * email: tdorobantu95@gmail.com
+// * pass: Parola12345!
+
 function App() {
   return (
     <div className="App">
