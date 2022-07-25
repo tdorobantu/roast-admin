@@ -13,3 +13,11 @@ export const confirmEmail = (data) =>
   axios.post(`${hostname}/api/user/confirmEmail`, data);
 export const resendConfirmation = (data) =>
   axios.post(`${hostname}/api/user/resendConfirmation`, data);
+export const getCountry = () =>
+  axios.get(
+    `https://628b7512667aea3a3e2faa85.mockapi.io/api/mock/dropdown/Country`
+  );
+export const getCurrency = () =>
+  axios.get(
+    `https://628b7512667aea3a3e2faa85.mockapi.io/api/mock/dropdown/Currency`
+  );

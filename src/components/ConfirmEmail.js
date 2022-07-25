@@ -3,7 +3,6 @@ import "./ConfirmEmail.css";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import isJWT from "validator/lib/isJWT";
 import * as api from "./../api/index";
-import { set } from "lodash";
 
 const ConfirmEmail = () => {
   const [message, setMessage] = useState("Verifying mail");
