@@ -6,6 +6,7 @@ export const getJwtToken = () => {
 };
 
 export const setJwtToken = (token) => {
+  console.log("inside jwt");
   sessionStorage.setItem("jwt", token);
 };
 
@@ -26,8 +27,9 @@ export const deleteRefreshToken = () => {
   sessionStorage.removeItem("refreshToken");
 };
 
-export const authHeader = () => {
-  const token = getJwtToken();
+export const authHeader = (refreshToken) => {
+  const token = refreshToken ? getRefreshToken() : getJwtToken();
+
   if (token !== null) {
     return {
       headers: {
