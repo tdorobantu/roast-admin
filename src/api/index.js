@@ -1,5 +1,6 @@
 import axios from "axios";
 import { authHeader, setJwtToken } from "../services/storageJWT";
+import { getRefreshToken } from "../services/storageJWT";
 
 const hostname =
   process.env.REACT_APP_HTTPS_ON === "true"
@@ -22,12 +23,14 @@ const onResponseError = async (error) => {
     error.response.data.errorType === "tokenExpired"
   ) {
     try {
-      const response = await refreshToken();
+      const token = getRefreshToken();
+      const response = await refreshToken({ refreshToken: token });
       setJwtToken(response.data.token);
       // Set authorization header of retry call to have token returned by refreshToken endpoint
       error.response.config.headers.Authorization = `Bearer ${response.data.token}`;
       return instance(error.response.config);
     } catch (_error) {
+      console.log(_error);
       return Promise.reject(_error);
     }
   }
@@ -51,6 +54,10 @@ export const resendConfirmation = (data) =>
 export const resetPassword = (data) =>
   instance.post(`${hostname}/api/user/confirmPassword`, data);
 export const initApp = () =>
-  instance.get(`${hostname}/api/init/app`, authHeader(false));
+  instance.get(`${hostname}/api/init/app`, authHeader());
 export const refreshToken = (data) =>
-  instance.get(`${hostname}/api/tokenServices/refreshToken`, authHeader(true));
+  instance.post(
+    `${hostname}/api/tokenServices/refreshToken`,
+    data,
+    authHeader()
+  );

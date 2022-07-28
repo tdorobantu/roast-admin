@@ -27,8 +27,8 @@ export const deleteRefreshToken = () => {
   sessionStorage.removeItem("refreshToken");
 };
 
-export const authHeader = (refreshToken) => {
-  const token = refreshToken ? getRefreshToken() : getJwtToken();
+export const authHeader = () => {
+  const token = getJwtToken();
 
   if (token !== null) {
     return {
@@ -37,6 +37,6 @@ export const authHeader = (refreshToken) => {
       },
     };
   } else {
-    return {};
+    throw new Error("There is no refreshToken in session storage!!!");
   }
 };
